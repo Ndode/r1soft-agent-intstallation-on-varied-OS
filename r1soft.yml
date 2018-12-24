@@ -2,7 +2,7 @@
 
 ---
 - name: R1soft agent installation on new servers
-  hosts: r1soft
+  hosts: all
   connection: ssh
 
 # For Fedora,Debian and Ubuntu OS do manually install python package to enable ansible to connect with the systems. To automate the process using ansible by running the following play for Debian and Ubuntu systems:
@@ -20,7 +20,7 @@
     - name: Create Repo file
       when: ansible_os_family == "RedHat"
       copy:
-        src: /etc/yum.repos.d/r1soft.repo
+        src: r1soft.repo
         dest: /etc/yum.repos.d/r1soft.repo
         owner: root
         group: root
