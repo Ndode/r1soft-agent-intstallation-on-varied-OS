@@ -20,7 +20,7 @@
     - name: Create Repo file
       when: ansible_os_family == "RedHat"
       copy:
-        src: r1soft.repo
+        src: /etc/yum.repos.d/r1soft.repo
         dest: /etc/yum.repos.d/r1soft.repo
         owner: root
         group: root
