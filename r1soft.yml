@@ -11,7 +11,6 @@
     - name: Install python for Ansible
       raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
       register: output
-      changed_when: output.stdout != ""
     - setup: # aka gather_facts
 
 #the above code turns of fact gathering as it requires python installed and sets up a pre-task to run before all others in the playbook. It then checks if python 2.7 is installed and if not then it installs it. registers the output if installation is needed and then prints it to the terminal output.
@@ -42,7 +41,7 @@
         state: restarted
     - name: Restart R1soft Agent
       when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
- systemd:
+      systemd:
         name: sbm-agent
         state: restarted
 
